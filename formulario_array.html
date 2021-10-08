@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="array.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contenedor">
+<h1>Registro de productos</h1>
+<form action="#" method="POST">
+<label >Nombre del producto</label><input type="text" id="nombre"><br>
+<label >marca del producto</label><input type="text" id="marca"><br>
+<label >precio</label><input type="number" id="precio"><br>
+<input type="button" value='registrar' class="registrar" onclick="registrar_notas()">
+
+</form>
+</div>
+<table>
+<th>nombre producto</th>
+<th>marca producto</th>
+<th>precio</th>
+<tbody id="tabla">
+</tbody>
+</table>
+</body>
+</html>
+<script>
+var productos=[];
+function registrar_notas(){
+var nombre=document.getElementById('nombre').value;
+var marca=document.getElementById('marca').value;
+var precio=document.getElementById('precio').value;
+productos.push(
+    {"nombre":nombre,"marca":marca,"precio":precio}
+);
+listar_notas();
+document.getElementById('nombre').value="";
+document.getElementById('marca').value="";
+document.getElementById('precio').value="";
+}
+function listar_notas(){
+    var listado='<tr>';
+
+for(var i=0;i<productos.length;i++){
+listado +="<td>"+i+"</td>";
+listado +="<td>"+productos[i].nombre+ "</td>";
+listado +="<td>"+productos[i].marca+ "</td>";
+listado +="<td>"+productos[i].precio+ "</td>";
+listado +="</tr>";
+}
+document.getElementById('tabla').innerHTML=listado;
+}
+
+</script>
